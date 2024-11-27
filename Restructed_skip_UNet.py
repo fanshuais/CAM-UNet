@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from .AutoEncoder import create_layer
-from .GSD import GSC_Block
+from .GSC import GSC_Block
 from .DCN import DeformConv2d
 from .CAMixer import CAMixer
 
