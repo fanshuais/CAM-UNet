@@ -5,7 +5,7 @@ from .GatedNN import Gated_Conv
 from .SAM import SpatialAttention
 
 
-class GCS_Block(nn.Module):
+class GSC_Block(nn.Module):
     def __init__(self, in_ch, out_ch, dilation):
         super(GCS_Block, self).__init__()
         self.Conv2d = nn.Conv2d(in_ch*2, in_ch, kernel_size=3, stride=1, padding=1)
