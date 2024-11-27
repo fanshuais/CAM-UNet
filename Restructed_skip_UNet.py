@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from .AutoEncoder import create_layer
-from .GSD_Block import GCS_Block
+from .GSD import GSC_Block
 from .DCN import DeformConv2d
 from .CAMixer import CAMixer
 
@@ -71,12 +71,12 @@ class Restructed_Skip_UNetEx(nn.Module):
         for i in range(out_channels):
             decoders.append(create_decoder(1, filters, kernel_size, weight_norm, batch_norm, activation, layers))
         self.decoders = nn.Sequential(*decoders)
-        self.G12 = GCS_Block(32, 32, 1)
-        self.G14 = GCS_Block(8, 8, 5)
-        self.G22 = GCS_Block(32, 32, 1)
-        self.G24 = GCS_Block(8, 8, 5)
-        self.G32 = GCS_Block(32, 32, 1)
-        self.G34 = GCS_Block(8, 8, 5)
+        self.G12 = GSC_Block(32, 32, 1)
+        self.G14 = GSC_Block(8, 8, 5)
+        self.G22 = GSC_Block(32, 32, 1)
+        self.G24 = GSC_Block(8, 8, 5)
+        self.G32 = GSC_Block(32, 32, 1)
+        self.G34 = GSC_Block(8, 8, 5)
         self.CAM = CAMixer(dim=13)
         self.DCN = DeformConv2d(3, 3)
         self.C = nn.Conv2d(in_channels=16,out_channels=3,kernel_size=1)
